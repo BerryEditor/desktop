@@ -102,7 +102,7 @@ if (isMac) {
       submenu: [
         {
           label: getTranslation('menu.learn-more'),
-          click: () => shell.openExternal('https://desktop.turbowarp.org/')
+          click: () => shell.openExternal('https://github.com/TinyPatch/desktop')
         }
       ]
     }
@@ -455,7 +455,7 @@ ipcMain.handle('get-packager-html', async () => {
 
 ipcMain.on('export-addon-settings', async (event, settings) => {
   const result = await dialog.showSaveDialog(BrowserWindow.fromWebContents(event.sender), {
-    defaultPath: 'turbowarp-addon-setting.json',
+    defaultPath: 'tinypatch-addon-setting.json',
     filters: [
       {
         name: 'JSON',
@@ -749,7 +749,7 @@ app.on('web-contents-created', (event, webContents) => {
   webContents.setWindowOpenHandler(defaultWindowOpenHandler);
 
   webContents.on('will-navigate', (e, url) => {
-    if (url === 'mailto:contact@turbowarp.org') {
+    if (url === 'mailto:obaydmerz@gmail.com') {
       // If clicking on the contact email address, we'll let the OS figure out how to open it
       return;
     }

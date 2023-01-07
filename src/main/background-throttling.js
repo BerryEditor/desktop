@@ -5,8 +5,8 @@ const BACKGROUND_THROTTLING_KEY = 'background_throttling';
 
 const isBackgroundThrottlingEnabled = () => get(BACKGROUND_THROTTLING_KEY) !== false;
 
-/** @type {Array<(enabled: boolean): void>} */
 const changeCallbacks = [];
+/** @type {Array<(enabled: boolean): void>} */
 const whenBackgroundThrottlingChanged = (callback) => {
   changeCallbacks.push(callback);
 };

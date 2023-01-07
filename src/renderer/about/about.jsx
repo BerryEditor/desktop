@@ -10,7 +10,7 @@ document.documentElement.lang = 'en';
 ipcRenderer.invoke('get-debug-info').then((info) => {
   ReactDOM.render((
     <main>
-      <h1>TurboWarp Desktop v{info.version}</h1>
+      <h1>TinyPatch Desktop v{info.version}</h1>
       <p>
         <i>
           {'(Debug info: '}
@@ -20,9 +20,8 @@ ipcRenderer.invoke('get-debug-info').then((info) => {
           {')'}
         </i>
       </p>
-      <p>TurboWarp is a mod of Scratch with a compiler and more features. TurboWarp is not affiliated with Scratch, the Scratch Team, or the Scratch Foundation. Learn more at <a href="https://desktop.turbowarp.org" target="_blank" rel="noreferrer">https://desktop.turbowarp.org</a>.</p>
-      <p>TurboWarp Desktop is licensed under the GNU General Public License v3.0. The source code is published <a href="https://github.com/TurboWarp/" target="_blank" rel="noreferrer">on GitHub</a>. You can read the license below:</p>
-      <pre>{licenseText}</pre>
+      <p>TinyPatch is a mod of Scratch with a compiler and more features. TinyPatch is not affiliated with Scratch, the Scratch Team, or the Scratch Foundation. Learn more at <a href="https://github.com/TinyPatch/desktop" target="_blank" rel="noreferrer">https://github.com/TinyPatch/desktop</a>.</p>
+      <p>TinyPatch Desktop is licensed under the GNU General Public License v3.0. The source code is published <a href="https://github.com/TinyPatch/" target="_blank" rel="noreferrer">on GitHub</a>.</p>
     </main>
   ), require('../app-target'));
 });

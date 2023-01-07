@@ -1,11 +1,11 @@
 {
-  "name": "turbowarp-desktop",
+  "name": "tinypatch-desktop",
   "description": "Scratch mod with a compiler, dark mode, a bunch of addons, and more.",
   "version": "1.7.0-beta.0",
   "license": "GPL-3.0",
   "author": {
-    "email": "contact@turbowarp.org",
-    "name": "Thomas Weber"
+    "email": "obaydmerz@gmail.com",
+    "name": "Abderrahmene Merzoug"
   },
   "scripts": {
     "dev": "npm run start",
@@ -28,23 +28,23 @@
     "postcss-import": "^14.0.0",
     "postcss-loader": "^4.2.0",
     "postcss-simple-vars": "^6.0.3",
-    "scratch-gui": "git+https://github.com/TurboWarp/scratch-gui.git#desktop",
+    "scratch-gui": "git+https://github.com/TinyPatch/scratch-gui.git#desktop",
     "semver": "^7.3.4",
     "webpack": "~4.46.0",
     "write-file-atomic": "^5.0.0"
   },
-  "homepage": "https://desktop.turbowarp.org/",
+  "homepage": "https://github.com/TinyPatch/desktop",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TurboWarp/desktop.git"
+    "url": "https://github.com/TinyPatch/desktop.git"
   },
   "bugs": {
-    "url": "https://github.com/TurboWarp/desktop/issues",
-    "email": "contact@turbowarp.org"
+    "url": "https://github.com/TinyPatch/desktop/issues",
+    "email": "obaydmerz@gmail.com"
   },
   "build": {
     "extends": "file:node_modules/@turbowarp/electron-webpack/out/electron-builder.js",
-    "appId": "org.turbowarp.desktop",
+    "appId": "ml.tinypatch.app.desktop",
     "productName": "TurboWarp",
     "win": {
       "artifactName": "${productName} Portable ${version} ${arch}.${ext}",
@@ -58,85 +58,6 @@
           "target": "portable",
           "arch": "x64"
         }
-      ]
-    },
-    "appx": {
-      "artifactName": "${productName} MS Store ${version} ${arch}.${ext}",
-      "applicationId": "TurboWarp",
-      "displayName": "TurboWarp",
-      "identityName": "45747ThomasWeber.TurboWarpDesktop",
-      "publisher": "CN=18FA7D4F-01BF-49F2-BF56-782DCEA49C69",
-      "publisherDisplayName": "Thomas Weber",
-      "backgroundColor": "#4c97ff",
-      "showNameOnTiles": true,
-      "languages": [
-        "en-US",
-        "fr",
-        "nl",
-        "de",
-        "it",
-        "ja",
-        "ru",
-        "es-ES"
-      ]
-    },
-    "nsis": {
-      "artifactName": "${productName} Setup ${version} ${arch}.${ext}",
-      "oneClick": false,
-      "deleteAppDataOnUninstall": true,
-      "allowToChangeInstallationDirectory": true
-    },
-    "mac": {
-      "artifactName": "${productName} Setup ${version}.${ext}",
-      "icon": "build/icon.icns",
-      "category": "public.app-category.education",
-      "darkModeSupport": true,
-      "gatekeeperAssess": false,
-      "hardenedRuntime": true,
-      "entitlements": "build/entitlements.mac.plist",
-      "entitlementsInherit": "build/entitlements.mac.plist",
-      "extendInfo": {
-        "NSCameraUsageDescription": "This app requires camera access when using the video sensing blocks.",
-        "NSMicrophoneUsageDescription": "This app requires microphone access when recording sounds or detecting loudness."
-      },
-      "target": [
-        {
-          "arch": "universal",
-          "target": "dmg"
-        }
-      ]
-    },
-    "linux": {
-      "artifactName": "${productName}-${os}-${arch}-${version}.${ext}",
-      "icon": "./build/",
-      "synopsis": "Mod of Scratch with a compiler and more features.",
-      "description": "TurboWarp is a Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.",
-      "category": "Development",
-      "extraFiles": [
-        "linux-files"
-      ],
-      "target": [
-        {
-          "target": "deb"
-        },
-        {
-          "target": "appimage"
-        },
-        {
-          "target": "tar.gz"
-        }
-      ]
-    },
-    "snap": {
-      "summary": "Scratch mod with a compiler, dark mode, a bunch of addons, and more.",
-      "allowNativeWayland": true,
-      "plugs": [
-        "default",
-        "camera",
-        "audio-playback",
-        "audio-record",
-        "joystick",
-        "removable-media"
       ]
     },
     "appImage": {
@@ -166,10 +87,9 @@
       {
         "provider": "github",
         "repo": "desktop",
-        "owner": "TurboWarp"
+        "owner": "TinyPatch"
       }
-    ],
-    "afterSign": "scripts/after-sign.js"
+    ]
   },
   "electronWebpack": {
     "main": {

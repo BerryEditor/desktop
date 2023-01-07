@@ -7,7 +7,7 @@ import writeFileAtomic from 'write-file-atomic';
  * @fileoverview Simple persistent key/value JSON data store.
  */
 
-const STORE_PATH = pathUtil.join(app.getPath('userData'), 'tw_config.json');
+const STORE_PATH = pathUtil.join(app.getPath('userData'), 'tp_config.json');
 
 const readStore = () => {
   try {

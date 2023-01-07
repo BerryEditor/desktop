@@ -20,6 +20,7 @@ import runAddons from 'scratch-gui/src/addons/entry';
 import loadInitialProject from './load-initial-project';
 import './gui.css';
 
+
 class StorageHelper {
   constructor (parent, generateURL) {
     this.parent = parent;
@@ -63,7 +64,7 @@ const openAbout = () => {
 };
 
 const openSourceCode = () => {
-  window.open('https://github.com/TurboWarp');
+  window.open('https://github.com/TinyPatch');
 };
 
 const openPrivacyPolicy = () => {
@@ -83,7 +84,7 @@ const openPackagerLegacy = () => {
 };
 
 const openDonate = () => {
-  window.open('https://github.com/sponsors/GarboMuffin');
+  window.open('data:text;base64,RG9uYXRlcyBhcmVuJ3Qgc3VwcG9ydGVkIG5vdyE=');
 };
 
 const handleUpdateProjectTitle = (title) => {

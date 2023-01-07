@@ -5,7 +5,7 @@ const inputRepository = pathUtil.join(__dirname, '..', 'extensions');
 const outputFolder = pathUtil.join(__dirname, '..', 'static', 'extensions.turbowarp.org');
 
 if (!fs.existsSync(inputRepository)) {
-  throw new Error('TurboWarp/extensions submodule is missing');
+  throw new Error('TinyPatch/extensions submodule is missing');
 }
 
 // Clean build every time.

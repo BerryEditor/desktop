@@ -21,7 +21,7 @@
         "loading-preview": "S'està carregant la vista prèvia",
         "menu.learn-more": "Aprèn més",
         "menu.new-window": "Nova Finestra",
-        "packager-legacy": "TurboWarp Packager (Converteix el projecte)",
+        "packager-legacy": "TinyPatch Packager (Converteix el projecte)",
         "packager-moved.details": "Aquest botó encara funciona, de moment, però és possible que s'elimini en una actualització futura.",
         "packager-moved.title": "Si us plau, utilitzeu el menú Fitxer > Projecte de paquets",
         "packager.loading": "S'està carregant el projecte de l'editor...",
@@ -56,7 +56,7 @@
         "updater.ignore": "No em tornis a recordar aquesta actualització",
         "updater.later": "Potser després",
         "updater.message": "Hi ha una actualització disponible: v{version}",
-        "updater.security.detail": "Aquesta versió del TurboWarp pot ser vulnerable a un exploit que posa el teu ordinador en risc d'infecció. L'actualització és altament recomanable.",
+        "updater.security.detail": "Aquesta versió del TinyPatch pot ser vulnerable a un exploit que posa el teu ordinador en risc d'infecció. L'actualització és altament recomanable.",
         "updater.security.message": "Hi ha disponible una actualització de seguretat important: v{version}"
     },
     "cs": {
@@ -80,7 +80,7 @@
         "updater.ignore": "Znovu nepřipomínat pro tuto aktualizaci",
         "updater.later": "Připomenout později",
         "updater.message": "Je dostupná aktualizace: v{version}",
-        "updater.security.detail": "Tato verze TurboWarp může být zranitelná na exploit, který může infikovat váš počítač. Aktualizace je vysoce doporučena.",
+        "updater.security.detail": "Tato verze TinyPatch může být zranitelná na exploit, který může infikovat váš počítač. Aktualizace je vysoce doporučena.",
         "updater.security.message": "Je dostupná důležitá bezpečnostní aktualizace: v{version}"
     },
     "de": {
@@ -105,7 +105,7 @@
         "loading-preview": "Vorschau wird geladen",
         "menu.learn-more": "Mehr erfahren",
         "menu.new-window": "Neues Fenster",
-        "packager-legacy": "TurboWarp Packager (Projekt umwandeln)",
+        "packager-legacy": "TinyPatch Packager (Projekt umwandeln)",
         "packager-moved.details": "Dieser Knopf funktioniert noch, aber er könnte in einem künftigen Update entfernt werden.",
         "packager-moved.title": "Bitte verwende stattdessen das Menü Datei > Projekt paketisieren.",
         "packager.loading": "Projekt wird vom Editor geladen...",
@@ -142,7 +142,7 @@
         "updater.ignore": "Erinnere mich nicht mehr an dieses Update",
         "updater.later": "Später erinnern",
         "updater.message": "Neues Update verfügbar: v{version}",
-        "updater.security.detail": "Diese Version von TurboWarp könnte ungeschützt gegen Angriffe, die deinen Computer mit Schadsoftware infizieren können, sein. Das Update ist hoch empfohlen.",
+        "updater.security.detail": "Diese Version von TinyPatch könnte ungeschützt gegen Angriffe, die deinen Computer mit Schadsoftware infizieren können, sein. Das Update ist hoch empfohlen.",
         "updater.security.message": "Ein wichtiges Sicherheitsupdate ist verfügbar: v{version}"
     },
     "es": {
@@ -167,7 +167,7 @@
         "loading-preview": "Cargando Previsualización",
         "menu.learn-more": "Ver más",
         "menu.new-window": "Nueva Ventana",
-        "packager-legacy": "TurboWarp Packager (Convertir Proyecto)",
+        "packager-legacy": "TinyPatch Packager (Convertir Proyecto)",
         "packager-moved.details": "Este botón todavía funciona por ahora, pero podría ser removido en una versión futura.",
         "packager-moved.title": "Por favor use el menú del proyecto Archivo > Convertidor en su lugar",
         "packager.loading": "Cargando proyecto desde editor...",
@@ -204,7 +204,7 @@
         "updater.ignore": "No me recuerdes de nuevo de esta actualización",
         "updater.later": "Recuérdeme más tarde",
         "updater.message": "Actualización disponible: v{version}",
-        "updater.security.detail": "Esta versión de TurboWarp puede ser vulnerable a un exploit que pone a su computadora en riesgo de una infección. Se recomienda altamente actualizar.",
+        "updater.security.detail": "Esta versión de TinyPatch puede ser vulnerable a un exploit que pone a su computadora en riesgo de una infección. Se recomienda altamente actualizar.",
         "updater.security.message": "Actualización importante de seguridad disponible: v{version}"
     },
     "fr": {
@@ -266,7 +266,7 @@
         "loading-preview": "Caricamento Anteprima",
         "menu.learn-more": "Ulteriori informazioni",
         "menu.new-window": "Nuova Finestra",
-        "packager-legacy": "Packager di TurboWarp (Conversione Progetto)",
+        "packager-legacy": "Packager di TinyPatch (Conversione Progetto)",
         "packager-moved.details": "Questo pulsante per un po' continuerà a funzionare, ma potrebbe essere rimosso nei prossimi aggiornamenti.",
         "packager-moved.title": "Usa invece il menu File > Crea un pacchetto ",
         "packager.loading": "Caricamento progetto dall'editor...",
@@ -303,11 +303,11 @@
         "updater.ignore": "Non ricordarmi di nuovo di questo aggiornamento",
         "updater.later": "Ricordamelo più tardi",
         "updater.message": "E' disponibile un aggiornamento: v{version}",
-        "updater.security.detail": "Questo versione di TurboWarp può risultare vulnerabile ad un attacco che renda il tuo computer a rischio di infezione. Consigliamo caldamente di aggiornare.",
+        "updater.security.detail": "Questo versione di TinyPatch può risultare vulnerabile ad un attacco che renda il tuo computer a rischio di infezione. Consigliamo caldamente di aggiornare.",
         "updater.security.message": "E' disponibile un importante aggiornamento per la sicurezza: v{version}"
     },
     "ja": {
-        "about": "TurboWarpについて",
+        "about": "TinyPatchについて",
         "context.copy": "コピー",
         "context.cut": "切り取り",
         "context.open-link": "リンクを開く",
@@ -328,7 +328,7 @@
         "loading-preview": "プレビューをロードする",
         "menu.learn-more": "もっと知る",
         "menu.new-window": "新しいウィンドウ",
-        "packager-legacy": "TurboWarp Packager (プロジェクトを変換する)",
+        "packager-legacy": "TinyPatch Packager (プロジェクトを変換する)",
         "packager-moved.details": "このボタンは今のところ機能しますが、今後のアップデートで削除される可能性があります。",
         "packager-moved.title": "代わりに「ファイル」>「プロジェクトパッケージ」メニューを使用してください",
         "packager.loading": "エディタからプロジェクトを読み込んでいます…",
@@ -365,7 +365,7 @@
         "updater.ignore": "アップデートを知らせないようにする",
         "updater.later": "後で知らせる",
         "updater.message": "アップデートがあります:v{version}",
-        "updater.security.detail": "このバージョンのTurboWarpは脆弱性により、お使いのコンピュータを危険にさらす可能性があります。アップデートすることを強くおすすめします。",
+        "updater.security.detail": "このバージョンのTinyPatchは脆弱性により、お使いのコンピュータを危険にさらす可能性があります。アップデートすることを強くおすすめします。",
         "updater.security.message": "セキュリティに関する重要なアップデートがあります。:v{version}"
     },
     "ja-hira": {
@@ -373,7 +373,7 @@
         "source": "ソースコード"
     },
     "ko": {
-        "about": "TurboWarp에 대하여",
+        "about": "TinyPatch에 대하여",
         "context.copy": "복사",
         "context.cut": "잘라내기",
         "context.open-link": "링크 열기",
@@ -407,7 +407,7 @@
         "prompt.cancel": "취소",
         "prompt.ok": "확인",
         "rosetta.details": "애플 실리콘 버전을 사용하면 성능이 향상되고 배터리를 더 적게 소모합니다. 애플 실리콘 버전을 설치해주세요.",
-        "rosetta.title": "Rosetta를 사용하여 TurboWarp를 실행하는 것은 권장되지 않습니다. 애플 실리콘 버전을 사용해 주세요.",
+        "rosetta.title": "Rosetta를 사용하여 TinyPatch를 실행하는 것은 권장되지 않습니다. 애플 실리콘 버전을 사용해 주세요.",
         "settings.background-throttling": "숨겨진 창 비활성화",
         "settings.background-throttling-disabled": "숨겨진 창을 활성화 상태로 두는 것은 CPU 점유율을 높이고 배터리 수명을 단축시키는 원인이 될 수 있습니다.",
         "settings.camera": "선택된 카메라",
@@ -431,7 +431,7 @@
         "updater.ignore": "이 업데이트 알림을 다시 표시하지 않음",
         "updater.later": "나중에 알림",
         "updater.message": "새 버전이 업데이트 되었습니다. 버전 : v{version}",
-        "updater.security.detail": "이 버전의 TurboWarp는 컴퓨터를 감염시킬 수 있는 위험 요소로부터 매우 취약합니다. 반드시 업데이트 하시기를 권장드립니다.",
+        "updater.security.detail": "이 버전의 TinyPatch는 컴퓨터를 감염시킬 수 있는 위험 요소로부터 매우 취약합니다. 반드시 업데이트 하시기를 권장드립니다.",
         "updater.security.message": "중요한 보안 업데이트가 있습니다. 버전 : v{version}"
     },
     "lt": {
@@ -456,7 +456,7 @@
         "loading-preview": "Užkraunama peržiūra",
         "menu.learn-more": "Sužinokite daugiau",
         "menu.new-window": "Naujas langas",
-        "packager-legacy": "TurboWarp Pakuotojas (kunvertuoti Projektą)",
+        "packager-legacy": "TinyPatch Pakuotojas (kunvertuoti Projektą)",
         "packager.loading": "Kraunamas projektas iš readaguotojo...",
         "permission.audio-denied": "Mikrofono leidimas atmestas",
         "permission.audio-denied-description": "Programa negalės įrašyti garsų ar aptikti garsumo.",
@@ -489,7 +489,7 @@
         "updater.ignore": "Nepriminkite man dar kartą apie šį atnaujinimą",
         "updater.later": "Priminkite man vėliau",
         "updater.message": "Yra atnaujinimas: v{version}",
-        "updater.security.detail": "Ši TurboWarp versija gali būti pažeidžiama dėl klaidos, dėl kurio kyla pavojus užkrėsti jūsų kompiuterį. Rekomenduojama atnaujinti.",
+        "updater.security.detail": "Ši TinyPatch versija gali būti pažeidžiama dėl klaidos, dėl kurio kyla pavojus užkrėsti jūsų kompiuterį. Rekomenduojama atnaujinti.",
         "updater.security.message": "Yra svarbus saugos atnaujinimas: v{version}"
     },
     "nb": {
@@ -503,7 +503,7 @@
         "unload.message": "Er du sikker at du vil slutte?",
         "updater.download": "Last ned oppdatering",
         "updater.message": "En oppdatering er tilgjengelig: v{version}",
-        "updater.security.detail": "Denne versjonen av TurboWarp kan være sårbar for en utnyttelse som setter datamaskinen din i fare for infeksjon. Oppdatering anbefales på det sterkeste."
+        "updater.security.detail": "Denne versjonen av TinyPatch kan være sårbar for en utnyttelse som setter datamaskinen din i fare for infeksjon. Oppdatering anbefales på det sterkeste."
     },
     "nl": {
         "about": "Over",
@@ -527,7 +527,7 @@
         "loading-preview": "Voorbeeld Laden",
         "menu.learn-more": "Lees meer",
         "menu.new-window": "Nieuw Venster",
-        "packager-legacy": "TurboWarp-Packager (Project Converteren)",
+        "packager-legacy": "TinyPatch-Packager (Project Converteren)",
         "packager-moved.details": "Deze knop werkt voor nu nog wel, maar wordt misschien verwijderd in een toekomstige update.",
         "packager-moved.title": "Gebruik in plaats daarvan het Bestand > Project packagen-menu",
         "packager.loading": "Project aan het laden uit editor...",
@@ -564,7 +564,7 @@
         "updater.ignore": "Herinner me niet opnieuw voor deze update.",
         "updater.later": "Herinner me later",
         "updater.message": "Er is een update beschikbaar: v{version}",
-        "updater.security.detail": "Deze versie van TurboWarp is mogelijk kwetsbaar voor een exploit waardoor je computer een risico op infectie loopt. Updaten wordt sterk aanbevolen.",
+        "updater.security.detail": "Deze versie van TinyPatch is mogelijk kwetsbaar voor een exploit waardoor je computer een risico op infectie loopt. Updaten wordt sterk aanbevolen.",
         "updater.security.message": "Er is een belangrijke beveiligingsupdate beschikbaar: v{version} "
     },
     "pl": {
@@ -588,7 +588,7 @@
         "loading-preview": "Ładowanie Podglądu",
         "menu.learn-more": "Ucz się więcej",
         "menu.new-window": "Nowe Okno",
-        "packager-legacy": "Pakowacz TurboWarp (Konwertowanie Projektu)",
+        "packager-legacy": "Pakowacz TinyPatch (Konwertowanie Projektu)",
         "packager.loading": "Ładowanie duszków z edytora...",
         "permission.audio-denied": "Uprawnienia do Mikrofonu Zostały Odmówione",
         "permission.audio-denied-description": "Aplikacja nie będzia miała dostępu do dźwięku ani nie będzie mogła wykrywać głośności.",
@@ -619,7 +619,7 @@
         "updater.ignore": "Nie przypominaj mi znów o tej aktualizacji",
         "updater.later": "Przypomnij mi później",
         "updater.message": "Dostępna jest aktualizacja: v{version}",
-        "updater.security.detail": "Ta wersja TurboWarp może być podatna na błędy, które narażają twój komputer na infekcję. Aktualizacja jest wysoce zalecana.",
+        "updater.security.detail": "Ta wersja TinyPatch może być podatna na błędy, które narażają twój komputer na infekcję. Aktualizacja jest wysoce zalecana.",
         "updater.security.message": "Dostępna jest ważna aktualizacja zabezpieczeń: v{version}"
     },
     "pt": {
@@ -640,7 +640,7 @@
         "loading-preview": "Carregando Pré-visualização",
         "menu.learn-more": "Saiba mais",
         "menu.new-window": "Nova Janela",
-        "packager-legacy": "TurboWarp Packager (Converter Projeto)",
+        "packager-legacy": "TinyPatch Packager (Converter Projeto)",
         "packager.loading": "Carregando projeto do editor...",
         "privacy": "Política de Privacidade",
         "prompt.cancel": "Cancelar",
@@ -658,7 +658,7 @@
         "updater.ignore": "Não me lembre dessa atualização de novo.",
         "updater.later": "Lembre-me depois",
         "updater.message": "Uma atualização está disponível: v{version}",
-        "updater.security.detail": "Sua versão atual do TurboWarp pode estar vulnerável a um exploit que coloca o seu computador em risco de uma infecção. Atualizar é altamente recomendado.",
+        "updater.security.detail": "Sua versão atual do TinyPatch pode estar vulnerável a um exploit que coloca o seu computador em risco de uma infecção. Atualizar é altamente recomendado.",
         "updater.security.message": "Uma atualização importante de segurança está disponível: v{version}"
     },
     "pt-br": {
@@ -682,7 +682,7 @@
         "loading-preview": "Carregando Pré-visualização",
         "menu.learn-more": "Saiba mais",
         "menu.new-window": "Nova Janela",
-        "packager-legacy": "TurboWarp Packager (Converter Projeto)",
+        "packager-legacy": "TinyPatch Packager (Converter Projeto)",
         "packager.loading": "Carregando projeto do editor...",
         "permission.audio-denied": "Permissão de Microfone negado",
         "permission.audio-denied-description": "O aplicativo será impossibilitado de gravar sons ou detectar intensidade sonora.",
@@ -713,7 +713,7 @@
         "updater.ignore": "Não me lembre dessa atualização de novo.",
         "updater.later": "Lembre-me depois",
         "updater.message": "Uma atualização está disponível: v{version}",
-        "updater.security.detail": "Sua versão atual do TurboWarp pode estar vulnerável a um exploit que coloca o seu computador em risco de uma infecção. Atualizar é altamente recomendado.",
+        "updater.security.detail": "Sua versão atual do TinyPatch pode estar vulnerável a um exploit que coloca o seu computador em risco de uma infecção. Atualizar é altamente recomendado.",
         "updater.security.message": "Uma atualização importante de segurança está disponível: v{version}"
     },
     "ro": {
@@ -733,7 +733,7 @@
         "updater.ignore": "Nu-mi aminti din nou de această actualizare",
         "updater.later": "Amintește-mi mai târziu",
         "updater.message": "O actualizare este disponibilă: v{version}",
-        "updater.security.detail": "Această versiune de TurboWarp poate fi vulnerabilă la un abuz care vă pune calculatorul la risc de infectare. Actualizare foarte recomandată.",
+        "updater.security.detail": "Această versiune de TinyPatch poate fi vulnerabilă la un abuz care vă pune calculatorul la risc de infectare. Actualizare foarte recomandată.",
         "updater.security.message": "O actualizare importantă de securitate este disponibilă: v{version}"
     },
     "ru": {
@@ -758,7 +758,7 @@
         "loading-preview": "Загрузка превью",
         "menu.learn-more": "Узнать больше",
         "menu.new-window": "Новое окно",
-        "packager-legacy": "TurboWarp Упаковщик (Конвертировать Проект)",
+        "packager-legacy": "TinyPatch Упаковщик (Конвертировать Проект)",
         "packager-moved.details": "Эта кнопка пока работает, но она может быть удалена в следующем обновлении.",
         "packager-moved.title": "Пожалуйста, вместо этого используйте меню Файл > Упаковать проект",
         "packager.loading": "Загрузка проекта из редактора...",
@@ -795,11 +795,11 @@
         "updater.ignore": "Не напоминать мне снова об этом обновлении",
         "updater.later": "Напомнить мне позже",
         "updater.message": "Доступно обновление: v{version}",
-        "updater.security.detail": "Эта версия TurboWarp может быть уязвима для эксплойта, который подвергает ваш компьютер риску заражения. Обновление настоятельно рекомендуется.",
+        "updater.security.detail": "Эта версия TinyPatch может быть уязвима для эксплойта, который подвергает ваш компьютер риску заражения. Обновление настоятельно рекомендуется.",
         "updater.security.message": "Доступно важное обновление безопасности: v{version}"
     },
     "sl": {
-        "about": "O TurboWarp",
+        "about": "O TinyPatch",
         "context.copy": "Kopiraj",
         "context.cut": "Izreži",
         "context.open-link": "Odpri povezavo",
@@ -820,7 +820,7 @@
         "loading-preview": "Nalaganje predogleda",
         "menu.learn-more": "Več informacij",
         "menu.new-window": "Novo okno",
-        "packager-legacy": "TurboWarp Packager (Pretvori projekt)",
+        "packager-legacy": "TinyPatch Packager (Pretvori projekt)",
         "packager-moved.details": "Ta gumb še deluje, vendar bo v prihodnosti morda odstranjen.",
         "packager-moved.title": "Uporabite meni Datoteka > Zapakiraj projekt",
         "packager.loading": "Nalaganje projekta iz urejevalnika...",
@@ -879,7 +879,7 @@
         "loading-preview": "Ladda förhandsvisning",
         "menu.learn-more": "Lär mer",
         "menu.new-window": "Nytt fönster",
-        "packager-legacy": "TurboWarp Projektförpackare (konvertera projekt)",
+        "packager-legacy": "TinyPatch Projektförpackare (konvertera projekt)",
         "packager-moved.details": "Denna knapp funkar nu men kommer kanske att bli borttagen i framtiden.",
         "packager-moved.title": "Använd Fil > Projektförpackare menyn instället",
         "packager.loading": "Ladda projekt från editorn...",
@@ -916,7 +916,7 @@
         "updater.ignore": "Påminn mig inte om denna uppdateringen  ",
         "updater.later": "Påminn mig senare",
         "updater.message": "En uppdatering är tillgänglig: v {version}",
-        "updater.security.detail": "Denna version av TurboWarp kan vara sårbar för ett utnyttjande som riskerar att infektera din dator. Uppdatering rekommenderas starkt.",
+        "updater.security.detail": "Denna version av TinyPatch kan vara sårbar för ett utnyttjande som riskerar att infektera din dator. Uppdatering rekommenderas starkt.",
         "updater.security.message": "En viktig säkerhets uppdatering är tillgänglig: v {version}"
     },
     "tr": {
@@ -938,7 +938,7 @@
         "loading-preview": "Önizleme Yüklemesi",
         "menu.learn-more": "Daha fazla bilgi edin",
         "menu.new-window": "Yeni Pencere",
-        "packager-legacy": "TurboWarp Paketleyicisi (Projeyi Dönüştür)",
+        "packager-legacy": "TinyPatch Paketleyicisi (Projeyi Dönüştür)",
         "packager.loading": "Proje editörden yükleniyor...",
         "privacy": "Gizillik Politikası",
         "prompt.cancel": "İptal",
@@ -956,7 +956,7 @@
         "updater.ignore": "Bana bu güncelemeyi hatırlatma",
         "updater.later": "Beni daha sonra hatırlat",
         "updater.message": "Bir güncellemesi mevcuttur: v{version}",
-        "updater.security.detail": "TurboWarp'ın bu sürümü, bilgisayarınızı virüs bulaşma riskine sokan bir açıktan yararlanmaya açık olabilir. Güncelleme şimdi tavsiye edilir.",
+        "updater.security.detail": "TinyPatch'ın bu sürümü, bilgisayarınızı virüs bulaşma riskine sokan bir açıktan yararlanmaya açık olabilir. Güncelleme şimdi tavsiye edilir.",
         "updater.security.message": "Önemli bir güvenlik güncellemesi mevcuttur: v{version}"
     },
     "uk": {
@@ -981,7 +981,7 @@
         "loading-preview": "Завантаження прев'ю",
         "menu.learn-more": "Дізнатися більше",
         "menu.new-window": "Нове вікно",
-        "packager-legacy": "Пакувальник TurboWarp (Конвертування Проектів)",
+        "packager-legacy": "Пакувальник TinyPatch (Конвертування Проектів)",
         "packager-moved.details": "Покищо ця кнопка не працює, але вона може бути видалена в наступному оновленні. ",
         "packager-moved.title": "Будь ласка, замість цього використовуйте меню Файл > Упакувати проект",
         "packager.loading": "Завантаження проекту з редактору...",
@@ -1018,7 +1018,7 @@
         "updater.ignore": "Не нагадувати мені знову про це оновлення",
         "updater.later": "Нагадати мені пізніше",
         "updater.message": "Доступне оновлення: v{version}",
-        "updater.security.detail": "Ця версія TurboWarp може бути вразливою до експлойту, який створює ризик зараження вашого комп’ютера. Настійно рекомендується оновити.",
+        "updater.security.detail": "Ця версія TinyPatch може бути вразливою до експлойту, який створює ризик зараження вашого комп’ютера. Настійно рекомендується оновити.",
         "updater.security.message": "Доступне важливе оновлення безпеки: v{version}"
     },
     "zh-cn": {
@@ -1043,7 +1043,7 @@
         "loading-preview": "加载预览",
         "menu.learn-more": "查看更多",
         "menu.new-window": "新窗口",
-        "packager-legacy": "TurboWarp Packager（作品打包转换工具）",
+        "packager-legacy": "TinyPatch Packager（作品打包转换工具）",
         "packager-moved.details": "这个按钮现在仍可以正常工作，但它可能在未来的某个版本中移除。",
         "packager-moved.title": "请使用文件 > 打包作品菜单。",
         "packager.loading": "从编辑器中加载作品",
@@ -1080,7 +1080,7 @@
         "updater.ignore": "不要再提醒更新",
         "updater.later": "稍后提醒我",
         "updater.message": "有可用的更新：v{version}",
-        "updater.security.detail": "此版本的 TurboWarp 易受攻击，使您的电脑面临感染风险。我们强烈建议更新。",
+        "updater.security.detail": "此版本的 TinyPatch 易受攻击，使您的电脑面临感染风险。我们强烈建议更新。",
         "updater.security.message": "有可用的重要安全更新：v{version}"
     },
     "zh-tw": {
@@ -1103,7 +1103,7 @@
         "loading-preview": "預覽加載中",
         "menu.learn-more": "瞭解更多",
         "menu.new-window": "新視窗",
-        "packager-legacy": "TurboWarp Packager (打包作品)",
+        "packager-legacy": "TinyPatch Packager (打包作品)",
         "packager.loading": "正在從編輯器加載作品…",
         "privacy": "隱私權政策",
         "prompt.cancel": "取消",

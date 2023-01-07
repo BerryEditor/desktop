@@ -14,6 +14,8 @@ const log = (...args) => {
 };
 
 const canUpdateCheckerBeEnabled = () => {
+  // TODO: Enable Updates
+  return false;
   if (process.env.TW_DISABLE_UPDATE_CHECKER) {
     return false;
   }

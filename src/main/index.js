@@ -1,25 +1,55 @@
-import {app, BrowserWindow, Menu, ipcMain, shell, dialog, clipboard, screen, net, session} from 'electron'
+import {
+  app,
+  BrowserWindow,
+  Menu,
+  ipcMain,
+  shell,
+  dialog,
+  clipboard,
+  screen,
+  net,
+  session
+} from 'electron'
+import "./titlebar.js";
 import pathUtil from 'path'
 import fs from 'fs';
 import writeFileAtomicLegacyCallback from 'write-file-atomic';
 import util from 'util';
-import {format as formatUrl} from 'url';
+import {
+  format as formatUrl
+} from 'url';
 import zlib from 'zlib';
 import checkForUpdate from './update-checker';
-import {getTranslation, getTranslationOrNull} from './translations';
-import {APP_NAME, PACKAGER_NAME} from './brand';
+import {
+  getTranslation,
+  getTranslationOrNull
+} from './translations';
+import {
+  APP_NAME,
+  PACKAGER_NAME
+} from './brand';
 import './advanced-user-customizations';
 import * as store from './store';
 import './crash';
 import parseArgs from './parse-args';
-import {isDevelopment, isMac, isLinux, staticDir} from './environment';
+import {
+  isDevelopment,
+  isMac,
+  isLinux,
+  staticDir
+} from './environment';
 import './library-files';
 import './user-agent';
 import './hardware-acceleration';
 import './get-debug-info';
-import {handlePermissionRequest} from './permissions';
+import {
+  handlePermissionRequest
+} from './permissions';
 import './detect-arm-translation';
-import {isBackgroundThrottlingEnabled, whenBackgroundThrottlingChanged} from './background-throttling';
+import {
+  isBackgroundThrottlingEnabled,
+  whenBackgroundThrottlingChanged
+} from './background-throttling';
 import './extensions';
 
 const readFile = util.promisify(fs.readFile);
@@ -79,12 +109,14 @@ const defaultWindowOpenHandler = (details) => {
 };
 
 if (isMac) {
-  Menu.setApplicationMenu(Menu.buildFromTemplate([
-    { role: 'appMenu' },
+  Menu.setApplicationMenu(Menu.buildFromTemplate([{
+      role: 'appMenu'
+    },
     {
       role: 'fileMenu',
-      submenu: [
-        { role: 'quit' },
+      submenu: [{
+          role: 'quit'
+        },
         {
           label: getTranslation('menu.new-window'),
           accelerator: 'Cmd+N',
@@ -94,17 +126,21 @@ if (isMac) {
         }
       ]
     },
-    { role: 'editMenu' },
-    { role: 'viewMenu' },
-    { role: 'windowMenu' },
+    {
+      role: 'editMenu'
+    },
+    {
+      role: 'viewMenu'
+    },
+    {
+      role: 'windowMenu'
+    },
     {
       role: 'help',
-      submenu: [
-        {
-          label: getTranslation('menu.learn-more'),
-          click: () => shell.openExternal('https://github.com/TinyPatch/desktop')
-        }
-      ]
+      submenu: [{
+        label: getTranslation('menu.learn-more'),
+        click: () => shell.openExternal('https://github.com/TinyPatch/desktop')
+      }]
     }
   ]));
 } else {
@@ -142,13 +178,13 @@ const closeWindowWhenPressEscape = (window) => {
 };
 
 const getWindowOptions = (options) => {
-  if (isLinux) {
+  //if (isLinux) {
     options.icon = pathUtil.join(staticDir, 'icon.png');
-  }
+  //}
   options.useContentSize = true;
-  options.minWidth = 200;
-  options.minHeight = 200;
-  options.webPreferences ||= {};
+  options.minWidth = options.minWidth || 200;
+  options.minHeight = options.minHeight || 200;
+  options.webPreferences = options.webPreferences || {};
   if (typeof options.webPreferences.preload === 'undefined') {
     // only undefined should be replaced as null is interpreted as "no preload script"
     options.webPreferences.preload = pathUtil.resolve(__dirname, 'preload.js')
@@ -173,7 +209,8 @@ const createWindow = (url, options) => {
 };
 
 const createEditorWindow = () => {
-  // Note: the route for this must be `editor`, otherwise the dev tools keyboard shortcuts will not work.
+  // ANCHOR: Create Editor Window
+  // The route for this must be `editor`, otherwise the dev tools keyboard shortcuts will not work.
   let url = getURL('editor');
   const fileToOpen = filesToOpen.shift();
   if (typeof fileToOpen !== 'undefined') {
@@ -183,7 +220,10 @@ const createEditorWindow = () => {
   const window = createWindow(url, {
     title: APP_NAME,
     width: 1280,
+    minWidth: 1024,
     height: 800,
+    minHeight: 640,
+    frame: false,
     webPreferences: {
       backgroundThrottling: isBackgroundThrottlingEnabled()
     }
@@ -367,7 +407,9 @@ ipcMain.handle('show-save-dialog', async (event, options) => {
     defaultPath: pathUtil.join(getLastAccessedDirectory(), options.suggestedName)
   });
   if (!result.canceled) {
-    const {filePath} = result;
+    const {
+      filePath
+    } = result;
     setLastAccessedFile(filePath);
     allowedToAccessFiles.add(filePath);
   }
@@ -456,12 +498,10 @@ ipcMain.handle('get-packager-html', async () => {
 ipcMain.on('export-addon-settings', async (event, settings) => {
   const result = await dialog.showSaveDialog(BrowserWindow.fromWebContents(event.sender), {
     defaultPath: 'tinypatch-addon-setting.json',
-    filters: [
-      {
-        name: 'JSON',
-        extensions: ['json']
-      }
-    ]
+    filters: [{
+      name: 'JSON',
+      extensions: ['json']
+    }]
   });
   if (result.canceled) {
     return;
@@ -579,12 +619,10 @@ app.on('session-created', (session) => {
     const extensionName = getTranslationOrNull(`files.${extension}`);
     if (extensionName) {
       item.setSaveDialogOptions({
-        filters: [
-          {
-            name: extensionName,
-            extensions: [extension]
-          }
-        ]
+        filters: [{
+          name: extensionName,
+          extensions: [extension]
+        }]
       });
     }
   });

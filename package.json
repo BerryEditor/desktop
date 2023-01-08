@@ -45,20 +45,26 @@
   "build": {
     "extends": "file:node_modules/@turbowarp/electron-webpack/out/electron-builder.js",
     "appId": "ml.tinypatch.app.desktop",
-    "productName": "TurboWarp",
+    "productName": "TinyPatch",
     "win": {
       "artifactName": "${productName} Portable ${version} ${arch}.${ext}",
       "icon": "build/icon.ico",
       "target": [
         {
-          "target": "nsis",
+          "target": "portable",
           "arch": "x64"
         },
         {
           "target": "portable",
-          "arch": "x64"
+          "arch": "ia32"
         }
       ]
+    },
+    "nsis": {
+      "artifactName": "${productName} Setup ${version} ${arch}.${ext}",
+      "oneClick": false,
+      "deleteAppDataOnUninstall": true,
+      "allowToChangeInstallationDirectory": true
     },
     "appImage": {
       "license": null

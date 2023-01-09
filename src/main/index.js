@@ -13,7 +13,9 @@ import {
 import "./titlebar.js";
 import pathUtil from 'path'
 import fs from 'fs';
-import writeFileAtomicLegacyCallback from 'write-file-atomic';
+import {
+  createAtomicWriteStream
+} from './atomic-file-write-stream';
 import util from 'util';
 import {
   format as formatUrl
@@ -54,7 +56,6 @@ import './extensions';
 
 const readFile = util.promisify(fs.readFile);
 const brotliDecompress = util.promisify(zlib.brotliDecompress);
-const writeFileAtomic = util.promisify(writeFileAtomicLegacyCallback);
 
 const filesToOpen = [];
 
@@ -89,7 +90,6 @@ const isDataURL = (url) => {
     const parsedUrl = new URL(url);
     return parsedUrl.protocol === 'data:';
   } catch (e) {
-    // ignore
   }
   return false;
 };
@@ -179,7 +179,7 @@ const closeWindowWhenPressEscape = (window) => {
 
 const getWindowOptions = (options) => {
   //if (isLinux) {
-    options.icon = pathUtil.join(staticDir, 'icon.png');
+  options.icon = pathUtil.join(staticDir, 'icon.png');
   //}
   options.useContentSize = true;
   options.minWidth = options.minWidth || 200;
@@ -270,7 +270,8 @@ const createAboutWindow = () => {
       width: 800,
       height: 450,
       minimizable: false,
-      maximizable: false
+      maximizable: false,
+      frame: false
     });
     aboutWindow.on('closed', () => {
       aboutWindow = null;
@@ -305,7 +306,8 @@ const createPrivacyWindow = () => {
       width: 800,
       height: 700,
       minimizable: false,
-      maximizable: false
+      maximizable: false,
+      frame: false
     });
     privacyWindow.on('closed', () => {
       privacyWindow = null;
@@ -321,7 +323,8 @@ const createDesktopSettingsWindow = () => {
     desktopSettingsWindow = createWindow(getURL('desktop-settings'), {
       title: getTranslation('desktop-settings'),
       width: 500,
-      height: 450
+      height: 450,
+      frame: false
     });
     desktopSettingsWindow.on('closed', () => {
       desktopSettingsWindow = null;
@@ -437,22 +440,70 @@ ipcMain.handle('read-file', async (event, file) => {
   return await readFile(file);
 });
 
-ipcMain.handle('write-file', async (event, file, arrayBuffer, expectedSize) => {
-  if (!allowedToAccessFiles.has(file)) {
-    throw new Error('Not allowed to access file');
+ipcMain.on('write-file-with-port', async (startEvent, path) => {
+  const port = startEvent.ports[0];
+  /** @type {NodeJS.WritableStream|null} */
+  let writeStream = null;
+
+  const handleError = (error) => {
+    console.error(error);
+    port.postMessage({
+      error
+    });
+    // Make sure the port is started as we can encounter an error before we normally
+    // begin to accept messages.
+    port.start();
+  };
+
+  try {
+    if (!allowedToAccessFiles.has(path)) {
+      throw new Error('Not allowed to access path');
+    }
+    writeStream = await createAtomicWriteStream(path);
+  } catch (error) {
+    handleError(error);
+    return;
   }
 
-  // We've seen a couple reports of our file saving logic seemingly truncating files at
-  // random points, so we're going to be extra paranoid.
-  if (arrayBuffer.byteLength !== expectedSize) {
-    throw new Error(`Expected ${expectedSize} bytes but got ${arrayBuffer.byteLength} bytes`);
-  }
-  if (arrayBuffer.byteLength <= 500) {
-    throw new Error(`File size is too small to be a real project: ${arrayBuffer.byteLength}`);
-  }
+  writeStream.on('atomic-error', handleError);
 
-  const bufferView = new Uint8Array(arrayBuffer);
-  await writeFileAtomic(file, bufferView);
+  const handleMessage = (data) => {
+    if (data.write) {
+      if (writeStream.write(data.write)) {
+        // Still more space in the buffer. Ask for more immediately.
+        return;
+      }
+      // Wait for the buffer to become empty before asking for more.
+      return new Promise(resolve => {
+        writeStream.once('drain', resolve);
+      });
+    } else if (data.finish) {
+      // Wait for the atomic file write to complete.
+      return new Promise(resolve => {
+        writeStream.once('atomic-finish', resolve);
+        writeStream.end();
+      });
+    }
+    throw new Error('Unknown message from renderer');
+  };
+
+  port.on('message', async (messageEvent) => {
+    try {
+      const data = messageEvent.data;
+      const id = data.id;
+      const result = await handleMessage(data);
+      port.postMessage({
+        response: {
+          id,
+          result
+        }
+      });
+    } catch (error) {
+      handleError(error);
+    }
+  });
+
+  port.start();
 });
 
 ipcMain.on('open-new-window', () => {
@@ -477,16 +528,6 @@ ipcMain.on('open-desktop-settings', () => {
 
 ipcMain.on('open-packager', (event) => {
   createPackagerWindow(event.sender);
-});
-
-ipcMain.on('open-packager-legacy', async (e) => {
-  const window = BrowserWindow.fromWebContents(e.sender);
-  await dialog.showMessageBox(window, {
-    title: APP_NAME,
-    message: getTranslation('packager-moved.title'),
-    detail: getTranslation('packager-moved.details')
-  });
-  createPackagerWindow(e.sender);
 });
 
 ipcMain.handle('get-packager-html', async () => {

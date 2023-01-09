@@ -79,10 +79,6 @@ const openPackager = () => {
   ipcRenderer.send('open-packager');
 };
 
-const openPackagerLegacy = () => {
-  ipcRenderer.send('open-packager-legacy');
-};
-
 const openDonate = () => {
   window.open('data:text;base64,RG9uYXRlcyBhcmVuJ3Qgc3VwcG9ydGVkIG5vdyE=');
 };
@@ -96,13 +92,6 @@ const getProjectTitle = (file) => {
   if (!match) return null;
   return match[1];
 };
-
-const readBlobAsArrayBuffer = (blob) => new Promise((resolve, reject) => {
-  const fr = new FileReader();
-  fr.onload = () => resolve(fr.result);
-  fr.onerror = () => reject(new Error('Cannot read blob as array buffer'));
-  fr.readAsArrayBuffer(blob);
-});
 
 const darkModeMedia = window.matchMedia('(prefers-color-scheme: dark)');
 darkModeMedia.onchange = () => document.body.setAttribute('theme', darkModeMedia.matches ? 'dark' : 'light');
@@ -195,10 +184,9 @@ const DesktopHOC = function (WrappedComponent) {
     async handleExportProjectOverIPC (event) {
       ipcRenderer.sendTo(event.senderId, 'export-project/ack');
       try {
-        const blob = await this.props.vm.saveProjectSb3();
-        const data = await readBlobAsArrayBuffer(blob);
+        const arrayBuffer = await this.props.vm.saveProjectSb3("arraybuffer");
         ipcRenderer.sendTo(event.senderId, 'export-project/done', {
-          data,
+          data: arrayBuffer,
           name: document.title
         });
       } catch (e) {
@@ -230,10 +218,6 @@ const DesktopHOC = function (WrappedComponent) {
             openNewWindow
           ]}
           onClickAbout={[
-            {
-              title: getTranslation('packager-legacy'),
-              onClick: openPackagerLegacy
-            },
             {
               title: getTranslation('desktop-settings'),
               onClick: onDesktopSettings

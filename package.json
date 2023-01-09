@@ -30,8 +30,7 @@
     "postcss-simple-vars": "^6.0.3",
     "scratch-gui": "git+https://github.com/TinyPatch/scratch-gui.git#desktop",
     "semver": "^7.3.4",
-    "webpack": "~4.46.0",
-    "write-file-atomic": "^5.0.0"
+    "webpack": "~4.46.0"
   },
   "homepage": "https://github.com/TinyPatch/desktop",
   "repository": {
@@ -52,19 +51,9 @@
       "target": [
         {
           "target": "portable",
-          "arch": "x64"
-        },
-        {
-          "target": "portable",
           "arch": "ia32"
         }
       ]
-    },
-    "nsis": {
-      "artifactName": "${productName} Setup ${version} ${arch}.${ext}",
-      "oneClick": false,
-      "deleteAppDataOnUninstall": true,
-      "allowToChangeInstallationDirectory": true
     },
     "appImage": {
       "license": null

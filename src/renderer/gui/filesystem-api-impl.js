@@ -3,7 +3,9 @@
  * https://web.dev/file-system-access/
  */
 
-import {ipcRenderer} from 'electron';
+import {
+  ipcRenderer
+} from 'electron';
 
 const getBasename = (path) => {
   const match = path.match(/([^/\\]+)$/);
@@ -11,54 +13,124 @@ const getBasename = (path) => {
   return match[1];
 };
 
-const readAsArrayBuffer = (blob) => new Promise((resolve, reject) => {
-  const fr = new FileReader();
-  fr.onload = () => resolve(fr.result);
-  fr.onerror = () => reject(new Error('Cannot read Blob as file'));
-  fr.readAsArrayBuffer(blob);
-});
+/**
+ * @param {unknown} contents
+ * @returns {Uint8Array}
+ */
+const toUnit8Array = (contents) => {
+  if (contents instanceof Uint8Array) {
+    return contents;
+  }
+  if (contents instanceof Blob) {
+    throw new Error('Should never receive a Blob here.');
+  }
+  return new Uint8Array(contents);
+};
 
 class WrappedFileWritable {
-  constructor (path) {
-    // non-standard, used internally
-    this.path = path;
+  /**
+   * @param {string} path The path on disk we are writing to.
+   */
+  constructor(path) {
+    this._path = path;
+
+    this._channel = new MessageChannel();
+
+    /**
+     * @type {Map<number, {resolve: () => void, reject: (error: unknown) => void}>}
+     */
+    this._callbacks = new Map();
+    this._lastMessageId = 1;
+
+    /**
+     * Error object from the main process, if any.
+     * @type {unknown}
+     */
+    this._error = null;
+
+    this._channel.port1.onmessage = (event) => {
+      const data = event.data;
+
+      const error = data.error;
+      if (error) {
+        this._error = error;
+        for (const handlers of this._callbacks.values()) {
+          handlers.reject(error);
+        }
+        this._callbacks.clear();
+      }
+
+      const response = data.response;
+      if (response) {
+        const id = response.id;
+        const handlers = this._callbacks.get(id);
+        if (handlers) {
+          handlers.resolve(response.result);
+          this._callbacks.delete(id);
+        }
+      }
+    };
+
+    // Note that we don't need to wait for the other end before we can start sending data. The messages
+    // will just be queued up.
+    // preload.js will detect this message event and forward it to the main process
+    window.postMessage({
+      ipcPostMessagePassthrough: {
+        channel: 'write-file-with-port',
+        data: this._path
+      }
+    }, location.origin, [this._channel.port2]);
   }
 
-  async write (content) {
-    if (content instanceof Blob) {
-      // We've seen a couple reports of our file saving logic seemingly truncating files at
-      // random points, so we're going to be extra paranoid.
-      const expectedSize = content.size;
-      const arrayBuffer = await readAsArrayBuffer(content);
-      await ipcRenderer.invoke('write-file', this.path, arrayBuffer, expectedSize);
+  _sendToMainAndWait(message) {
+    if (this._error) {
+      throw this._error;
     }
+
+    const messageId = this._lastMessageId++;
+    message.id = messageId;
+    return new Promise((resolve, reject) => {
+      this._callbacks.set(messageId, {
+        resolve,
+        reject
+      });
+      this._channel.port1.postMessage(message);
+    });
   }
 
-  async close () {
-    // no-op
+  async write(contents) {
+    await this._sendToMainAndWait({
+      write: toUnit8Array(contents)
+    });
+  }
+
+  async close() {
+    await this._sendToMainAndWait({
+      finish: true
+    });
   }
 }
 
 export class WrappedFileHandle {
-  constructor (path) {
+  constructor(path) {
     // non-standard, used internally and by DesktopComponent
     this.path = path;
     // part of public API
     this.name = getBasename(this.path);
   }
 
-  async getFile () {
+  async getFile() {
     const data = await ipcRenderer.invoke('read-file', this.path);
     return new File([data], this.name);
   }
 
-  async createWritable () {
+  async createWritable() {
     return new WrappedFileWritable(this.path);
   }
 }
 
 class AbortError extends Error {
-  constructor (message) {
+  constructor(message) {
     super(message);
     this.name = 'AbortError';
   }

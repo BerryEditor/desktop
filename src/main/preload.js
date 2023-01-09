@@ -25,6 +25,18 @@ contextBridge.exposeInMainWorld('electron', {
     },
     removeAllListeners(...args) {
       return ipcRenderer.removeAllListeners(...args);
-    },
+    }
+  }
+});
+
+
+// Make the renderer able to transfer post messages
+window.addEventListener('message', (e) => {
+  if (e.origin !== location.origin) {
+    return
+  }
+  if (e.data.ipcPostMessagePassthrough) {
+    const {channel, data} = e.data.ipcPostMessagePassthrough;
+    ipcRenderer.postMessage(channel, data, e.ports);
   }
 });

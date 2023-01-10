@@ -11,7 +11,7 @@ const getTemporaryPath = (originalPath) => {
   for (let i = 0; i < 4; i++) {
     random += Math.floor(Math.random() * 10).toString();
   }
-  return originalPath + '.tp' + random;
+  return originalPath + '.tw' + random;
 };
 
 const getOriginalMode = async (path) => {
@@ -110,6 +110,11 @@ const writeFileAtomic = async (path, data) => {
     stream.on('atomic-error', reject);
     stream.end();
   });
+};
+
+export {
+  createAtomicWriteStream,
+  writeFileAtomic
 };
 
 export {

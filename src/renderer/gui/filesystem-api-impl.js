@@ -31,7 +31,7 @@ class WrappedFileWritable {
   /**
    * @param {string} path The path on disk we are writing to.
    */
-  constructor(path) {
+  constructor (path) {
     this._path = path;
 
     this._channel = new MessageChannel();
@@ -82,7 +82,7 @@ class WrappedFileWritable {
     }, location.origin, [this._channel.port2]);
   }
 
-  _sendToMainAndWait(message) {
+  _sendToMainAndWait (message) {
     if (this._error) {
       throw this._error;
     }
@@ -98,13 +98,13 @@ class WrappedFileWritable {
     });
   }
 
-  async write(contents) {
+  async write (contents) {
     await this._sendToMainAndWait({
       write: toUnit8Array(contents)
     });
   }
 
-  async close() {
+  async close () {
     await this._sendToMainAndWait({
       finish: true
     });

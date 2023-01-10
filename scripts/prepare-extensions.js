@@ -1,8 +1,5 @@
 const pathUtil = require('path');
 
-const inputRepository = pathUtil.join(__dirname, '..', 'extensions');
-const outputFolder = pathUtil.join(__dirname, '..', 'static', 'extensions.turbowarp.org');
-
 let Builder;
 try {
   Builder = require('../extensions/development/builder');
@@ -16,11 +13,10 @@ try {
   process.exit(1);
 }
 
-const isProduction = true;
-
 const outputDirectory = pathUtil.join(__dirname, '..', 'static', 'extensions.turbowarp.org');
-const builder = new Builder(isProduction);
+const mode = 'desktop';
+const builder = new Builder(mode);
 const build = builder.build();
 build.export(outputDirectory);
 
-console.log(`Built copy of extensions.turbowarp.org to ${outputDirectory}`);
+console.log(`Built ${mode} copy of extensions.turbowarp.org to ${outputDirectory}`);

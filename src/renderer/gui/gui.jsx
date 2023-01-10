@@ -80,7 +80,7 @@ const openPackager = () => {
 };
 
 const openDonate = () => {
-  window.open('data:text;base64,RG9uYXRlcyBhcmVuJ3Qgc3VwcG9ydGVkIG5vdyE=');
+  window.open('https://github.com/sponsors/GarboMuffin');
 };
 
 const handleUpdateProjectTitle = (title) => {
@@ -119,10 +119,12 @@ const DesktopHOC = function (WrappedComponent) {
         title: null
       };
       this.handleExportProjectOverIPC = this.handleExportProjectOverIPC.bind(this);
+      this.handleLoadExtensionOverIPC = this.handleLoadExtensionOverIPC.bind(this);
       localeChanged(this.props.locale);
     }
     componentDidMount () {
       ipcRenderer.on('export-project/start', this.handleExportProjectOverIPC);
+      ipcRenderer.on('load-extension/start', this.handleLoadExtensionOverIPC);
 
       if (mountedOnce) {
         return;
@@ -180,11 +182,12 @@ const DesktopHOC = function (WrappedComponent) {
     }
     componentWillUnmount () {
       ipcRenderer.removeListener('export-project/start', this.handleExportProjectOverIPC);
+      ipcRenderer.removeListener('load-extension/start', this.handleLoadExtensionOverIPC);
     }
     async handleExportProjectOverIPC (event) {
       ipcRenderer.sendTo(event.senderId, 'export-project/ack');
       try {
-        const arrayBuffer = await this.props.vm.saveProjectSb3("arraybuffer");
+        const arrayBuffer = await this.props.vm.saveProjectSb3('arraybuffer');
         ipcRenderer.sendTo(event.senderId, 'export-project/done', {
           data: arrayBuffer,
           name: document.title
@@ -193,6 +196,16 @@ const DesktopHOC = function (WrappedComponent) {
         console.error(e);
         ipcRenderer.sendTo(event.senderId, 'export-project/error', '' + e);
       }
+    }
+    handleLoadExtensionOverIPC (event, url) {
+      this.props.vm.extensionManager.loadExtensionURL(url)
+        .then(() => {
+          ipcRenderer.sendTo(event.senderId, 'load-extension/done');
+        })
+        .catch((error) => {
+          console.error(error);
+          ipcRenderer.sendTo(event.senderId, 'load-extension/error', error);
+        });
     }
     render() {
       const {
@@ -258,8 +271,11 @@ const DesktopHOC = function (WrappedComponent) {
     projectChanged: PropTypes.bool,
     vm: PropTypes.shape({
       loadProject: PropTypes.func,
-      saveProjectSb3: PropTypes.func
-    })
+      saveProjectSb3: PropTypes.func,
+      extensionManager: PropTypes.shape({
+        loadExtensionURL: PropTypes.func,
+      }),
+    }),
   };
   const mapStateToProps = state => ({
     fileHandle: state.scratchGui.tw.fileHandle,

@@ -10,16 +10,12 @@ const extensionDirectory = pathUtil.join(staticDir, 'extensions.turbowarp.org', 
 
 app.on('session-created', (session) => {
   session.webRequest.onBeforeRequest({
-    urls: ['https://extensions.turbowarp.org/*']
+    urls: ['https://extensions.turbowarp.org/*','https://extensions.tinypatch.ml/*']
   }, (details, callback) => {
     const path = new URL(details.url).pathname;
-    if (path.endsWith('.js')) {
-      callback({
-        redirectURL: `tw-extensions://${path}`
-      });
-    } else {
-      callback({});
-    }
+    callback({
+      redirectURL: `tw-extensions://${path}`
+    });
   });
 });
 
@@ -33,21 +29,18 @@ protocol.registerSchemesAsPrivileged([
 ]);
 
 app.whenReady().then(() => {
-  protocol.registerBufferProtocol('tw-extensions', (request, callback) => {
-    const path = pathUtil.basename(new URL(request.url).pathname);
-    const absolutePath = pathUtil.join(extensionDirectory, path);
+  protocol.registerFileProtocol('tw-extensions', (request, callback) => {
+    const pathAndQuery = request.url.substring('tw-extensions://'.length);
+    const path = pathAndQuery.split('?')[0];
+    const staticPath = pathUtil.join(extensionDirectory, path);
 
-    if (!absolutePath.startsWith(extensionDirectory)) {
+    if (!staticPath.startsWith(extensionDirectory)) {
       callback({
         statusCode: 404
       });
       return;
     }
 
-    readFile(absolutePath)
-      .then((buffer) => callback(buffer))
-      .catch((err) => callback({
-        statusCode: 404
-      }));
-  });  
+    callback(pathUtil.resolve(staticPath));
+  });
 });

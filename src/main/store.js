@@ -1,11 +1,7 @@
-import {
-  app
-} from 'electron';
+import {app} from 'electron';
 import fs from 'fs';
 import pathUtil from 'path';
-import {
-  writeFileAtomic
-} from './atomic-file-write-stream';
+import {writeFileAtomic} from './atomic-file-write-stream';
 
 /**
  * @fileoverview Simple persistent key/value JSON data store.

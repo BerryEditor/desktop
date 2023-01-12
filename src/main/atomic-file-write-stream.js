@@ -116,8 +116,3 @@ export {
   createAtomicWriteStream,
   writeFileAtomic
 };
-
-export {
-  createAtomicWriteStream,
-  writeFileAtomic
-};

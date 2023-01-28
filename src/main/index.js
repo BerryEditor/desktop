@@ -948,7 +948,7 @@ if (acquiredLock) {
     }
   });
 
-  app.on('ready', () => {
+  app.whenReady().then(() => {
     checkForUpdate();
     autoCreateEditorWindows();
   });

@@ -17,8 +17,6 @@ import {
 const readFile = promisify(fs.readFile);
 const decompress = promisify(brotliDecompress);
 
-
-
 const mimeTypes = new Map();
 mimeTypes.set('wav', 'audio/wav');
 mimeTypes.set('svg', 'image/svg+xml');

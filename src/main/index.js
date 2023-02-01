@@ -53,7 +53,7 @@ import {
 } from './background-throttling';
 import './extensions';
 import {
-  createAtomicWriteStream
+  createAtomicWriteStream, writeFileAtomic
 } from './atomic-file-write-stream';
 
 protocol.registerSchemesAsPrivileged([

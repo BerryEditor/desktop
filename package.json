@@ -1,7 +1,7 @@
 {
   "name": "tinypatch-desktop",
   "description": "Scratch mod with a compiler, dark mode, a bunch of addons, and more.",
-  "version": "1.7.1",
+  "version": "1.7.2-beta.1",
   "license": "GPL-3.0",
   "author": {
     "email": "obaydmerz@gmail.com",
@@ -22,7 +22,7 @@
     "@electron/notarize": "^1.2.3",
     "@turbowarp/electron-webpack": "^2.9.1",
     "css-loader": "^5.0.2",
-    "electron": "^22.2.0",
+    "electron": "^22.3.3",
     "electron-builder": "^23.6.0",
     "postcss": "^8.4.13",
     "postcss-import": "^14.0.0",

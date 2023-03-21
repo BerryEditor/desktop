@@ -421,7 +421,7 @@ const createPackagerWindow = (editorWebContents) => {
 
 const createDataWindow = (url) => {
   const window = createWindow(url, {
-    title: 'data: URL',
+    title: 'Data Protocol Preview',
     width: 480,
     height: 360,
     webPreferences: {

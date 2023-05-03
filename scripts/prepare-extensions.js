@@ -11,6 +11,8 @@ try {
     console.error(e);
   }
   process.exit(1);
+} finally {
+  
 }
 
 const outputDirectory = pathUtil.join(__dirname, '..', 'static', 'extensions.turbowarp.org');

@@ -19,7 +19,7 @@
   "devDependencies": {
     "scratch-gui": "git+https://github.com/TinyPatch/scratch-gui.git#desktop",
     "@babel/preset-env": "^7.12.16",
-    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-react": "^7.22.3",
     "@electron/notarize": "^1.2.3",
     "@turbowarp/electron-webpack": "^2.9.1",
     "css-loader": "^5.0.2",
